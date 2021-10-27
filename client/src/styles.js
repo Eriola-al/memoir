@@ -2,7 +2,7 @@ import { makeStyles} from '@material-ui/core/styles';
 
 export default makeStyles(() => ({
     appBar: {
-        borderRadius: 15,
+        borderRadius: '15px',
         margin: '30px 0',
         display: 'flex',
         flexDirection: 'row',
@@ -13,8 +13,7 @@ export default makeStyles(() => ({
         color: 'rgba(0,183,255, 1)',
       },
       image: {
-        marginLeft: '730px',
+        marginLeft: '30px',
         width: 60,
-        marginTop: '-60px'
       },
 }));
