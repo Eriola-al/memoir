@@ -12,10 +12,6 @@ export default makeStyles((theme) => ({
       heading: {
         color: 'rgba(0,183,255, 1)',
       },
-      image: {
-        marginLeft: '30px',
-        width: 60,
-      },
       [theme.breakpoints.down('sm')]: {
         mainContainer: {
           flexDirection: "column-reverse"
