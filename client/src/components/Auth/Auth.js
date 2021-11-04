@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
-import { Avatar, Grid, Container, Button, Paper, Typography, TextField } from '@material-ui/core';
+import { Avatar, Grid, Container, Button, Paper, Typography } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { GoogleLogin } from 'react-google-login';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import useStyles from './styles'
 import Input from './Input';
+import Icon from './Icon';
 
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword );
 
@@ -23,6 +29,23 @@ const Auth = () => {
     const switchMode = () => {
       setIsSignUp((prevIsSignUp) => !prevIsSignUp);
       handleShowPassword(false);
+    };
+
+    const googleSuccess = async (res) => {
+      const result = res?.profileObj;
+      const token = res?.tokenId;
+
+      try {
+        dispatch( { type: 'AUTH' , data: { result, token } });
+
+        history.push('/');
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const googleFailure = () => {
+      console.log('Identifikimi në Google ishte i pasuksesshëm.Provo sërish më vonë.');
     };
     
     return (
@@ -49,7 +72,18 @@ const Auth = () => {
               <Button className = {classes.submit} type = "submit" fullWidth variant = "contained" color = "primary">
                 {isSignUp ? 'Regjistrohu' : 'Kyçu'}
               </Button>
-              <Grid container justify = "flex-end">
+              <GoogleLogin 
+                 clientId = "780049468590-4jr7lqrplgjj6db9tu36d94qttoa10q1.apps.googleusercontent.com"
+                 render = {(renderProps) => (
+                   <Button className = {classes.googleButton} color = "primary" fullWidth onClick = {renderProps.onClick} disabled = {renderProps.disabled} startIcon = {<Icon />} variant = "contained">
+                     Kyçu me Google 
+                     </Button>
+                 )}
+                 onSuccess = {googleSuccess}
+                 onFailure = {googleFailure}
+                 cookiePolicy = "single_host_origin"
+              />
+              <Grid container justifyContent = "flex-end">
                 <Grid item>
                   <Button onClick = {switchMode} >
                     { isSignUp ? 'Keni tashmë një llogari? Identifikohuni' : 'Nuk keni një llogari? Regjistrohuni'}
