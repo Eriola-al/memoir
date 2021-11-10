@@ -54,7 +54,7 @@ const Auth = () => {
       }
     };
 
-    const googleFailure = () => {
+    const googleError = () => {
       console.log('Identifikimi në Google ishte i pasuksesshëm.Provo sërish më vonë.');
     };
     
@@ -90,7 +90,7 @@ const Auth = () => {
                      </Button>
                  )}
                  onSuccess = {googleSuccess}
-                 onFailure = {googleFailure}
+                 onFailure = {googleError}
                  cookiePolicy = "single_host_origin"
               />
               <Grid container justifyContent = "flex-end">

@@ -39,7 +39,7 @@ const Form = ({ currentId, setCurrentId }) => {
         return (
             <Paper className = {classes.paper}>
                 <Typography variant = "h6" align = "center" >
-                    Ju lutem identifikohu për të krijuar kujtimet tuaja dhe për të pëlqyer kujtimet e të tjerëve.
+                    Ju lutem identifikohuni për të krijuar postimet tuaja dhe për të pëlqyer postimet e të tjerëve.
                 </Typography>
             </Paper>
         )
