@@ -4,7 +4,7 @@ import { Container, Grow, Grid, Paper, AppBar, TextField, Button } from '@materi
 import { useHistory, useLocation } from 'react-router-dom';
 import ChipInput from 'material-ui-chip-input';
 
-import { getPosts } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import Pagination from '../Pagination/Pagination';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
@@ -31,7 +31,7 @@ const Home = () => {
 
     const searchPost = () => {
         if(search.trim()){
-            //dispatch -> fetch search post
+            dispatch(getPostsBySearch({search, tags: tags.join(',')}));
         }else{
             history.push('/');
         }

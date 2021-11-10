@@ -10,7 +10,17 @@ export const getPosts = () => async (dispatch) => {
     } catch (error) {
         console.log(error.message)
     }
-}
+};
+
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchPostsBySearch(searchQuery);
+
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export const createPost = (post) => async (dispatch) => {
     try {
@@ -20,7 +30,7 @@ export const createPost = (post) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const updatePost = (id, post) => async (dispatch) => {
     try {
@@ -30,7 +40,7 @@ export const updatePost = (id, post) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const deletePost = (id) => async (dispatch) => {
     try {
@@ -40,7 +50,7 @@ export const deletePost = (id) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
 
 export const likePost = (id) => async (dispatch) => {
     try {
@@ -50,4 +60,4 @@ export const likePost = (id) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-}
+};
