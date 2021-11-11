@@ -5,8 +5,6 @@ import { AppBar, Button, Typography, Toolbar, Avatar } from '@material-ui/core';
 import decode from 'jwt-decode';
 
 import useStyles from './styles';
-import memoir from '../../images/memoir.png';
-
 
 const Navbar = () => {
     const classes = useStyles();
@@ -38,8 +36,7 @@ const Navbar = () => {
     return (
         <AppBar className = {classes.appBar} position = "static" color = "inherit">
             <div className={classes.brandContainer}>
-            <Typography component={Link} to="/" className = {classes.heading} variant = "h2" align = "center">Memoir</Typography>
-            <img className = {classes.image} src={memoir} alt="memories" height = "60" />
+            <Typography component={Link} to="/" className = {classes.heading} variant = "h2" align = "center">iCode</Typography>
             </div>
             <Toolbar className = {classes.toolbar}>
                 {user ? (
