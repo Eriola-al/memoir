@@ -31,7 +31,8 @@ const Home = () => {
 
     const searchPost = () => {
         if(search.trim() || tags){
-            dispatch(getPostsBySearch({search, tags: tags.join(',')}));
+            dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+            history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
         }else{
             history.push('/');
         }
@@ -43,9 +44,9 @@ const Home = () => {
         }
     };
 
-    const handleAdd = (tag) => setTags([...tags, tag]);
+    const handleAddChip = (tag) => setTags([...tags, tag]);
 
-    const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
+    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
     return (
         <Grow in>
@@ -56,9 +57,22 @@ const Home = () => {
                        </Grid>
                        <Grid item xs={12} sm={6} md={3}> 
                        <AppBar className={classes.appBarSearch} position = "static" color = "inherit">
-                           <TextField name="search" variant = "outlined" label = "Kërko Postime" fullWidth onKeyPress={handleKeyPress} value={search} onChange = {(e) => setSearch(e.target.value)}/>
-                           <ChipInput style={{ margin: '10px 0'}} value={tags} onAdd={handleAdd} onDelete={handleDelete} label="Etiketat e Kërkimit" variant="outlined"/>
-                           <Button variant="contained" onClick={searchPost} color="primary">Kërko</Button>
+                           <TextField 
+                           onKeyDown={handleKeyPress} 
+                           name="search" 
+                           variant = "outlined" 
+                           label = "Kërko Postime" 
+                           fullWidth 
+                           value={search} 
+                           onChange = {(e) => setSearch(e.target.value)}/>
+                           <ChipInput 
+                           style={{ margin: '10px 0'}} 
+                           value={tags} 
+                           onAdd={handleAddChip} 
+                           onDelete={handleDeleteChip} 
+                           label="Etiketat e Kërkimit" 
+                           variant="outlined"/>
+                           <Button className = {classes.searchButton} variant="contained" onClick={searchPost} color="primary">Kërko</Button>
                        </AppBar>
                            <Form currentId = {currentId} setCurrentId = {setCurrentId} />
                            <Paper elevation = {6}>
