@@ -21,7 +21,7 @@ const Input = ({ half, name, label, handleChange, autoFocus, type, handleShowPas
                           {type === "password" ? <Visibility /> : <VisibilityOff />}
                       </IconButton>
                   </InputAdornment> 
-               )
+               ),
            } : null }
            />
        </Grid>
