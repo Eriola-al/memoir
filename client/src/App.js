@@ -6,9 +6,9 @@ import PostDetails from './components/PostDetails/PostDetails';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
-alStorage.getItem('profile'));
+
 const App = () => {
-  const user = JSON.parse(loc
+  const user = JSON.parse(localStorage.getItem('profile'));
 
    return (
     <BrowserRouter>
