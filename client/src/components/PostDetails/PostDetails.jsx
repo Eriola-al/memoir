@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useHistory, useParams } from 'react-router-dom';
 
+import CommentSection from './CommentSection';
 import { getPost, getPostsBySearch } from '../../actions/posts';
 import useStyles from './styles';
 
@@ -48,6 +49,8 @@ const Post = () => {
           <Typography variant="h6">Krijuar nga: {post.name}</Typography>
           <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
+          <CommentSection post ={post}/>
+          <Divider style={{ margin: '20pc 0' }} />
         </div>
         <div className={classes.imageSection}>
           <img className={classes.media} src={post.selectedFile } alt={post.title} />
