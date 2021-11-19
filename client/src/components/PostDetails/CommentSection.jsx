@@ -3,7 +3,7 @@ import { Typography, TextField, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import useStyles from './styles';
-import { commentPost } from '../../action/posts';
+import { commentPost } from '../../actions/posts';
 
 const CommentSection = ({ post }) => {
     const classes = useStyles();
@@ -28,6 +28,7 @@ const CommentSection = ({ post }) => {
                         </Typography>
                     ))}
                 </div>
+                {user?.result?.name && (
                 <div style = {{ width: '70%'}}>
                     <Typography gutterBottom variant = "h6">Shkruaj një koment</Typography>
                     <TextField 
@@ -43,6 +44,7 @@ const CommentSection = ({ post }) => {
                         Komento
                     </Button>
                 </div>
+                )}
             </div>
         </div>
     );
